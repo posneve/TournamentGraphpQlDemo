@@ -1,14 +1,12 @@
 using AutoMapper.QueryableExtensions;
 using GreenDonut;
-using HotChocolate;
 using HotChocolate.Language;
 using HotChocolate.Types;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
-using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
-namespace TournamentGraphpQlDemo.GraphQL.DtoExample;
+namespace TournamentGraphpQlDemo.GraphQL.Queries.DtoExample;
 
 [ExtendObjectType(OperationType.Query)]
 public class TeamDtoQuery

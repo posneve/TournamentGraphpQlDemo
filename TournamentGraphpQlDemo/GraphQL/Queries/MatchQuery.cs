@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using TournamentGraphpQlDemo.Domain;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 
-namespace TournamentGraphpQlDemo.GraphQL;
+namespace TournamentGraphpQlDemo.GraphQL.Queries;
 
 [ExtendObjectType(OperationType.Query)]
 public class MatchQuery

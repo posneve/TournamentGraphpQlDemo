@@ -20,6 +20,8 @@ builder.Services
     .AddGraphQLServer()
     .AddTournamentTypes()
     .AddQueryType()
+    .AddMutationType()
+    .AddMutationConventions()
     .AddFiltering()
     .RegisterDbContext<TournamentContext>(DbContextKind.Pooled)
     .ModifyRequestOptions(o=>o.IncludeExceptionDetails = true)

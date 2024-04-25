@@ -2,7 +2,7 @@ using AutoMapper;
 using TournamentGraphpQlDemo.Domain;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
-namespace TournamentGraphpQlDemo.GraphQL.DtoExample;
+namespace TournamentGraphpQlDemo.GraphQL.Queries.DtoExample;
 
 public class DtoMapperProfile : Profile
 {
