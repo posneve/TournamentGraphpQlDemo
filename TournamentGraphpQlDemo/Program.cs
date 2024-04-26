@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 builder.Services.AddPooledDbContextFactory<TournamentContext>(o => 
-        o.UseNpgsql(configuration.GetConnectionString("TournamentPostgresDb"))
+        o.UseNpgsql(configuration.GetConnectionString("TournamentPostgresDb")
+                )
+        
     );
 
 
@@ -41,7 +43,7 @@ builder.Services
     //.UsePersistedQueryPipeline() // if you want to use persisted queries
     ;
 
-await AddData.AddSomeData(builder.Services);
+//await AddData.AddSomeData(builder.Services);
 
 
 var app = builder.Build();
