@@ -62,10 +62,10 @@ public class MatchExtensions
     }
 
     [UsedImplicitly]
-    public IQueryable<Goal> GetGoals(TournamentContext dbContext, [Parent] Match parent)
+    public IQueryable<MatchEvent> GetMatchEvents(TournamentContext dbContext, [Parent] Match parent)
     {
-        return dbContext.Matches.Include(x => x.Goals)
+        return dbContext.Matches.Include(x => x.MatchEvents)
             .Where(x => x.Id == parent.Id)
-            .SelectMany(x => x.Goals);
+            .SelectMany(x => x.MatchEvents);
     }
 }

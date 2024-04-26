@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TournamentGraphpQlDemo;
 using TournamentGraphpQlDemo.Data;
+using TournamentGraphpQlDemo.Domain;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ builder.Services
     .RegisterDbContext<TournamentContext>(DbContextKind.Pooled)
     .ModifyRequestOptions(o=>o.IncludeExceptionDetails = true)
     .AddProjections()
+    .AddType<MatchPlayerEvent>()
+    .AddType<MatchGenericEvent>()
     .AddInstrumentation() // if you want to use telemetry
     // .AddBananaCakePopServices(x =>
     // {

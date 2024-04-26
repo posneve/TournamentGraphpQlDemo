@@ -10,5 +10,5 @@ public class Player
     [IsProjected(false)] 
     public List<Club> Clubs { get; set; } = new();
     [IsProjected(false)] 
-    public List<Goal> Goals { get; set; } = new();
+    public List<MatchPlayerEvent> MatchEvents { get; set; } = new();
 }

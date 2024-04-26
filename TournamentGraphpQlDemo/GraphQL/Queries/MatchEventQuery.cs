@@ -11,41 +11,41 @@ namespace TournamentGraphpQlDemo.GraphQL.Queries;
 
 
 [ExtendObjectType(OperationType.Query)]
-public class GoalQuery
+public class MatchEventQuery
 {
     [UsedImplicitly]
-    public Task<Goal> GetGoal(Guid id, GoalDataLoader loader) => loader.LoadAsync(id);
+    public Task<MatchEvent> GetMatchEvent(Guid id, MatchEventDataLoader loader) => loader.LoadAsync(id);
 
     [UsedImplicitly]
     [UseFiltering]
-    public IQueryable<Goal> GetGoals(TournamentContext dbContext)
+    public IQueryable<MatchEvent> GetMatchEvents(TournamentContext dbContext)
     {
-        return dbContext.Goals;
+        return dbContext.MatchEvents;
     }
 }
 
 [UsedImplicitly]
-public class GoalDataLoader(
+public class MatchEventDataLoader(
     IDbContextFactory<TournamentContext> dbContextFactory,
     IBatchScheduler batchScheduler,
     DataLoaderOptions options)
-    : BatchDataLoader<Guid, Goal>(batchScheduler, options)
+    : BatchDataLoader<Guid, MatchEvent>(batchScheduler, options)
 {
-    protected override async Task<IReadOnlyDictionary<Guid, Goal>>
+    protected override async Task<IReadOnlyDictionary<Guid, MatchEvent>>
         LoadBatchAsync(IReadOnlyList<Guid> keys, CancellationToken ct)
     {
         await using var dbContext = await dbContextFactory.CreateDbContextAsync(ct);
-        return  await dbContext.Goals
+        return  await dbContext.MatchEvents
             .Where(s => keys.Contains(s.Id))
             .ToDictionaryAsync(t => t.Id, ct);
     }
 }
 
-[ExtendObjectType(typeof(Goal))]
-public class GoalExtensions
+[ExtendObjectType(typeof(MatchPlayerEvent))]
+public class MatchEventExtensions
 {
     [UsedImplicitly]
-    public Player GetPlayer(TournamentContext dbContext, [Parent] Goal parent)
+    public Player GetPlayer(TournamentContext dbContext, [Parent] MatchPlayerEvent parent)
     {
         return dbContext.Players.Find(parent.PlayerId) ?? new Player();
     }

@@ -52,11 +52,11 @@ public class PlayerExtensions
                    .SelectMany(x=>x.Clubs);
     }   
     [UsedImplicitly]
-    public IQueryable<Goal> GetGoals(TournamentContext dbContext, [Parent] Player parent)
+    public IQueryable<MatchEvent> GetGoals(TournamentContext dbContext, [Parent] Player parent)
     {
-        return dbContext.Players.Include(x => x.Goals)
+        return dbContext.Players.Include(x => x.MatchEvents)
             .Where(x => x.Id == parent.Id)
-            .SelectMany(x=>x.Goals);
+            .SelectMany(x=>x.MatchEvents);
     }  
     
     [UsedImplicitly]

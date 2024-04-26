@@ -93,18 +93,53 @@ public class AddData
         };
 
 
-        var goals = new List<Goal>
+        var matchEvent = new List<MatchEvent>
         {
-            new()
+            new MatchGenericEvent
             {
-                Player = player,
-                Time = DateTime.Now
+                EventType = MatchGenericEventType.MatchStarted,
+                Time = DateTime.Today.AddHours(12)
             },
-            new()
+            new MatchPlayerEvent()
             {
                 Player = player,
-                Time = DateTime.Now.AddMinutes(5)
-            }
+                Time = DateTime.Now,
+                EventType = MatchPlayerEventType.Goal
+            },
+            new MatchPlayerEvent()
+            {
+                Player = player,
+                Time = DateTime.Today.AddHours(12).AddMinutes(5),
+                EventType = MatchPlayerEventType.Goal
+            },
+            new MatchGenericEvent
+            {
+            EventType = MatchGenericEventType.FirstPeriodFinished,
+            Time = DateTime.Today.AddHours(12).AddMinutes(20)
+        },
+            new MatchGenericEvent
+            {
+                EventType = MatchGenericEventType.SecondPeriodeStared,
+                Time = DateTime.Today.AddHours(12).AddMinutes(25)
+            },
+            
+            new MatchPlayerEvent()
+            {
+                Player = player,
+                Time = DateTime.Now,
+                EventType = MatchPlayerEventType.Goal
+            },
+            new MatchPlayerEvent()
+            {
+                Player = player,
+                Time = DateTime.Now.AddMinutes(5),
+                EventType = MatchPlayerEventType.Goal
+            },
+            new MatchGenericEvent
+            {
+                EventType = MatchGenericEventType.MatchFinished,
+                Time = DateTime.Today.AddHours(12).AddMinutes(50)
+            },
         };
         
         var match = new Match
@@ -113,7 +148,7 @@ public class AddData
             HomeTeam = team,
             GuestTeam = team2,
             Court = court, 
-            Goals = goals,
+            MatchEvents = matchEvent,
         };
         
         var match2 = new Match
