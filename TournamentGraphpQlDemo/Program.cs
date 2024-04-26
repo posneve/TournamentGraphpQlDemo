@@ -6,9 +6,10 @@ using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var inmemoryDbContextName = Guid.NewGuid().ToString();
+var configuration = builder.Configuration;
 builder.Services.AddPooledDbContextFactory<TournamentContext>(o => 
-    o.UseInMemoryDatabase(inmemoryDbContextName));
+        o.UseNpgsql(configuration.GetConnectionString("TournamentPostgresDb"))
+    );
 
 
 // Add services to the container.
@@ -55,26 +56,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapGraphQL();
 app.MapBananaCakePop();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
 
 app.Run();
 

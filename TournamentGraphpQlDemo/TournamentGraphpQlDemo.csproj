@@ -1,28 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>881c4610-29d3-412d-9ad0-49d06e3695a8</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" Version="13.0.1" />
-        <PackageReference Include="BananaCakePop.Services" Version="3.2.0" />
-        <PackageReference Include="HotChocolate" Version="13.9.0" />
-        <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.9.0" />
-        <PackageReference Include="HotChocolate.Types.Analyzers" Version="13.9.0" />
-        <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+        <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="BananaCakePop.Services" Version="3.2.0"/>
+        <PackageReference Include="HotChocolate" Version="13.9.0"/>
+        <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.9.0"/>
+        <PackageReference Include="HotChocolate.Types.Analyzers" Version="13.9.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2023.3.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-          <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
 </Project>

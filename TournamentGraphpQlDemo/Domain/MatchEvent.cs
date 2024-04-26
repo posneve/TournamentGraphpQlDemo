@@ -9,7 +9,7 @@ public interface IMatchEvent
 {
      Guid Id { get; set; }
      Match Match { get; set; }
-     DateTime Time { get; set; }
+     TimeOnly Time { get; set; }
 }
 
 [InterfaceType("MatchEventBase")]
@@ -19,7 +19,7 @@ public abstract class MatchEvent
     [IsProjected(false)]
     public Guid MatchId { get; set; }
     public Match Match { get; set; } = null!;
-    public DateTime Time { get; set; }
+    public TimeOnly Time { get; set; }
 }
 
 public class MatchPlayerEvent :MatchEvent, IMatchEvent

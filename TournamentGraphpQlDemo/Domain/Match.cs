@@ -13,7 +13,8 @@ public class Match
     [IsProjected(false)] public Guid GuestTeamId { get; set; }
     [IsProjected(false)] public Team GuestTeam { get; set; } = null!;
 
-    public DateTime Time { get; set; }
+    public DateOnly Date { get; set; }
+    public TimeOnly Time { get; set; }
     [IsProjected(false)] public List<MatchEvent> MatchEvents { get; set; } = new();
 
     public void AddPlayerEvent(Player player, MatchPlayerEventType eventType, Team team)
@@ -24,7 +25,7 @@ public class Match
                 Player = player,
                 EventType = eventType,
                 IsHomeTeam = team == HomeTeam,
-                Time = DateTime.Now
+                Time = TimeOnly.FromDateTime(DateTime.Now)
             });
     }
 
@@ -34,7 +35,7 @@ public class Match
             new MatchGenericEvent
             {
                 EventType = eventType,
-                Time = DateTime.Now
+                Time = TimeOnly.FromDateTime(DateTime.Now)
             });
     }
 }

@@ -98,53 +98,54 @@ public class AddData
             new MatchGenericEvent
             {
                 EventType = MatchGenericEventType.MatchStarted,
-                Time = DateTime.Today.AddHours(12)
+                Time = TimeOnly.FromDateTime(DateTime.Now)
             },
             new MatchPlayerEvent()
             {
                 Player = player,
-                Time = DateTime.Now,
+                Time = TimeOnly.FromDateTime(DateTime.Now),
                 EventType = MatchPlayerEventType.Goal
             },
             new MatchPlayerEvent()
             {
                 Player = player,
-                Time = DateTime.Today.AddHours(12).AddMinutes(5),
+                Time = TimeOnly.FromDateTime(DateTime.Now).AddHours(12).AddMinutes(5),
                 EventType = MatchPlayerEventType.Goal
             },
             new MatchGenericEvent
             {
             EventType = MatchGenericEventType.FirstPeriodFinished,
-            Time = DateTime.Today.AddHours(12).AddMinutes(20)
+            Time = TimeOnly.FromDateTime(DateTime.Now).AddHours(12).AddMinutes(20)
         },
             new MatchGenericEvent
             {
                 EventType = MatchGenericEventType.SecondPeriodeStared,
-                Time = DateTime.Today.AddHours(12).AddMinutes(25)
+                Time = TimeOnly.FromTimeSpan(new TimeSpan(0,0,25))
             },
             
             new MatchPlayerEvent()
             {
                 Player = player,
-                Time = DateTime.Now,
+                Time = TimeOnly.FromDateTime(DateTime.Now),
                 EventType = MatchPlayerEventType.Goal
             },
             new MatchPlayerEvent()
             {
                 Player = player,
-                Time = DateTime.Now.AddMinutes(5),
+                Time = TimeOnly.FromDateTime(DateTime.Now).AddMinutes(5),
                 EventType = MatchPlayerEventType.Goal
             },
             new MatchGenericEvent
             {
                 EventType = MatchGenericEventType.MatchFinished,
-                Time = DateTime.Today.AddHours(12).AddMinutes(50)
+                Time = TimeOnly.FromDateTime(DateTime.Now).AddHours(12).AddMinutes(50)
             },
         };
         
         var match = new Match
         {
-            Time = DateTime.Today.AddDays(2),
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(2)),
+            Time = new TimeOnly(12,0),
             HomeTeam = team,
             GuestTeam = team2,
             Court = court, 
@@ -153,7 +154,8 @@ public class AddData
         
         var match2 = new Match
         {
-            Time = DateTime.Today.AddDays(4),
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(4)),
+            Time = new TimeOnly(12,0),
             HomeTeam = team2,
             GuestTeam = team,
             Court = court2
@@ -161,7 +163,8 @@ public class AddData
 
         var match3 = new Match
         {
-            Time = DateTime.Today.AddDays(2),
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(2)),
+            Time = new TimeOnly(12,0),
             HomeTeam = team2,
             GuestTeam = team,
             Court = court2

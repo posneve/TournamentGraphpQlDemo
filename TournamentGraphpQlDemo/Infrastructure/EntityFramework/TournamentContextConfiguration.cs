@@ -44,7 +44,7 @@ public class TournamentContextConfiguration :
             .WithMany(x => x.MatchEvents)
             .HasForeignKey(x => x.MatchId);
 
-        builder.HasDiscriminator<string>("EventType")
+        builder.HasDiscriminator<string>("EventCategory")
             .HasValue<MatchPlayerEvent>("MatchPlayerEvent")
             .HasValue<MatchGenericEvent>("MatchGenericEvent");
     }
@@ -52,6 +52,7 @@ public class TournamentContextConfiguration :
     public void Configure(EntityTypeBuilder<MatchGenericEvent> builder)
     {
         builder.Property(x => x.EventType)
+            .HasColumnName("EventType")
             .HasConversion<string>()
             .HasMaxLength(100);
     }
@@ -63,6 +64,7 @@ public class TournamentContextConfiguration :
             .HasForeignKey(x => x.PlayerId);
         
         builder.Property(x => x.EventType)
+            .HasColumnName("PlayerEventType")
             .HasConversion<string>()
             .HasMaxLength(100);
     }
