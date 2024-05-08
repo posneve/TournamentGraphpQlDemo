@@ -3,7 +3,7 @@ using HotChocolate.Types;
 using TournamentGraphpQlDemo.Domain;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 
-namespace TournamentGraphpQlDemo.GraphQL.Motations;
+namespace TournamentGraphpQlDemo.GraphQL.Mutations;
 
 [ExtendObjectType(OperationType.Mutation)]
 public class ClubMutation

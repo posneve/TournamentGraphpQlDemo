@@ -1,16 +1,18 @@
 using HotChocolate.Language;
 using HotChocolate.Types;
+using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using TournamentGraphpQlDemo.Domain;
-using TournamentGraphpQlDemo.GraphQL.Motations.Exceptions;
+using TournamentGraphpQlDemo.GraphQL.Mutations.Exceptions;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 
-namespace TournamentGraphpQlDemo.GraphQL.Motations;
+namespace TournamentGraphpQlDemo.GraphQL.Mutations;
 
 [ExtendObjectType(OperationType.Mutation)]
 public class TeamMutation
 {
     [Error(typeof(ClubDoesNotExistException))]
+    [UsedImplicitly]
     public async Task<Team> TeamAdd(TeamAddInput input, TournamentContext ctx, CancellationToken ct)
     {
         var club = await ctx.Clubs.FirstOrDefaultAsync(x => x.Id == input.ClubId, ct);

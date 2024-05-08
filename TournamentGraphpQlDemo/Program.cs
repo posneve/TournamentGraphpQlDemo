@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using TournamentGraphpQlDemo;
-using TournamentGraphpQlDemo.Data;
 using TournamentGraphpQlDemo.Domain;
 using TournamentGraphpQlDemo.Infrastructure.EntityFramework;
 

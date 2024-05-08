@@ -50,7 +50,9 @@ public class PlayerExtensions
     public IQueryable<TeamDto> GetTeams(TournamentContext dbContext, [Parent] PlayerDto parent)
     {
         return dbContext.Players.Include(player => player.Teams)
-                   .Where(x => x.Id == parent.Id).SelectMany(x=>x.Teams).ProjectTo<TeamDto>(DtoMapperProfile.ConfigurationProvider);
+                   .Where(x => x.Id == parent.Id)
+                   .SelectMany(x=>x.Teams)
+                   .ProjectTo<TeamDto>(DtoMapperProfile.ConfigurationProvider);
     }
 }
 
